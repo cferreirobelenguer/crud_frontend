@@ -15,6 +15,26 @@
                 <th>Price</th>
                 <th>Action</th>
             </tr>
+            <ng-container *ngFor="let item of productList">
+                <tr class="home__table--content">
+                    <td>
+                        {{item.img}}
+                    </td>
+                    <td>
+                        {{item.descripcion}}
+                    </td>
+                    <td>
+                        {{item.precio}}
+                    </td>
+                    <td class="home__table__action">
+                        <img src="../../assets/icons/edit.svg" (click)="handleEdit()">
+                        <img src="../../assets/icons/delete.svg" (click)="handleDelete()">
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+        <table>
+            
             <tr class="home__table--content">
                 <td>
                     imagen
