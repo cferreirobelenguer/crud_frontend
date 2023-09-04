@@ -16,11 +16,13 @@ export class HomeComponent implements OnInit{
 
   public handleCreate(): void {
     this.router.navigate(['create'])
+    console.log("Se ejecuta el evento crear")
   }
-  public handleEdit():void {
+  public handleEdit(): void {
     this.router.navigate(['update/:id'])
+    console.log("Se ejecuta el evento editar")
   }
-  public handleDelete():void {
+  public handleDelete(): void {
     console.log("Se ejecuta el evento eliminar")
   }
   

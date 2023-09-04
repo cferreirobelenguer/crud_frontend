@@ -1,1 +1,20 @@
-<p>create works!</p>
+<section class="create">
+    <div class="create__header">
+        <div class="create__header__text">
+            <h1 class="create__header__text--title">Create a new product</h1>
+            <h3 class="create__header__text--subtitle">Please enter your data</h3>
+        </div>
+        <button class="create__header__btn" (click)="handleNavigation()">Home</button>
+    </div>
+    <div>
+        <form class="create__form">
+            <div class="create__form__container">
+                <input type="text" placeholder="Description" class="create__form--input">
+                <input type="number" placeholder="Price" class="create__form--input">
+                <input type="text" placeholder="Url image" class="create__form--input">
+            </div>
+            <button class="create__header__btn" (click)="handleSendData()">Create product</button>
+        </form>
+    </div>
+
+</section>

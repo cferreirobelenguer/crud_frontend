@@ -1,1 +1,20 @@
-<p>update works!</p>
+<section class="update">
+    <div class="update__header">
+        <div class="update__header__text">
+            <h1 class="update__header__text--title">Update product</h1>
+            <h3 class="update__header__text--subtitle">Please enter your data</h3>
+        </div>
+        <button class="update__header__btn" (click)="handleNavigation()">Home</button>
+    </div>
+    <div>
+        <form class="update__form">
+            <div class="update__form__container">
+                <input type="text" placeholder="Description" class="update__form--input">
+                <input type="number" placeholder="Price" class="update__form--input">
+                <input type="text" placeholder="Url image" class="update__form--input">
+            </div>
+            <button class="update__header__btn" (click)="handleSendData()">Create product</button>
+        </form>
+    </div>
+
+</section>

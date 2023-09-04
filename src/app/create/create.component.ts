@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent {
+  constructor(
+    private router: Router
+  ) {
 
+  }
+  public handleNavigation():void {
+    this.router.navigate(['']);
+  }
+
+  public handleSendData() {
+    
+  }
 }
