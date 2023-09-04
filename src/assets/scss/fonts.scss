@@ -1,0 +1,35 @@
+$poppins: 'Poppins', sans-serif;
+
+@mixin title_h1 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    letter-spacing: 0.2px;
+    margin: 0;
+};
+
+@mixin subtitle_h2 {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.13px;
+    margin: 0;
+};
+
+@mixin title_table {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.14px;
+}
+
+@mixin content_table {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.14px;
+}
