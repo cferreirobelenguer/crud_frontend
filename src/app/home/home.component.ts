@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,20 @@ import { Component, OnInit} from '@angular/core';
 })
 export class HomeComponent implements OnInit{
   
-  constructor() {
-
-  }
+  constructor(
+    private router: Router
+  ) {}
   ngOnInit(): void {
+  }
+
+  public handleCreate(): void {
+    this.router.navigate(['create'])
+  }
+  public handleEdit():void {
+    this.router.navigate(['update/:id'])
+  }
+  public handleDelete():void {
+    console.log("Se ejecuta el evento eliminar")
   }
   
   

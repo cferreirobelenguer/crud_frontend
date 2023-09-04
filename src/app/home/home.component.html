@@ -4,7 +4,7 @@
             <h1 class="home__header__text--title">Products</h1>
             <h3 class="home__header__text--subtitle">Here is a list of products</h3>
         </div>
-        <button class="home__header__btn">Add product</button>
+        <button class="home__header__btn" (click)="handleCreate()">Add product</button>
     </div>
     
     <div class="home__table">
@@ -26,8 +26,8 @@
                     price
                 </td>
                 <td class="home__table__action">
-                    <img src="../../assets/icons/edit.svg" #edit>
-                    <img src="../../assets/icons/delete.svg" #delete>
+                    <img src="../../assets/icons/edit.svg" (click)="handleEdit()">
+                    <img src="../../assets/icons/delete.svg" (click)="handleDelete()">
                 </td>
             </tr>
         </table>
