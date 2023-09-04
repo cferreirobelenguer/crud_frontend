@@ -7,3 +7,4 @@ Angular, scss, mysql, php
 ## Descripción:
 ### Creación de bbdd en phpmyadmin productos con la tabla stock y los atributos (id, descripcion, precio, img)
 ### CRUD de productos: crear, borrar, ver, modificar productos.
+## Repositorio backend php mysql:https://github.com/cferreirobelenguer/crud_backend
