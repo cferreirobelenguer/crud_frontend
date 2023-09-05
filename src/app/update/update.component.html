@@ -9,11 +9,12 @@
     <div>
         <form class="update__form">
             <div class="update__form__container">
-                <input type="text" placeholder="Description" class="update__form--input">
-                <input type="number" placeholder="Price" class="update__form--input">
-                <input type="text" placeholder="Url image" class="update__form--input">
+                <input type="text" placeholder="Description" [(ngModel)]="description" name="description" class="update__form--input" required>
+                <input type="number" placeholder="Price" [(ngModel)]="price" name="price" class="update__form--input" required>
+                <input type="text" placeholder="Url image" [(ngModel)]="img" name="img" class="update__form--input" required>
             </div>
-            <button class="update__header__btn" (click)="handleSendData()">Create product</button>
+            <button class="update__header__btn" (click)="handleSendData()">Update product</button>
+            <small *ngIf="this.errorMessage" class="update__header__error">{{this.errorMessage}}</small>
         </form>
     </div>
 
