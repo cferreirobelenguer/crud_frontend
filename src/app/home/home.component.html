@@ -28,28 +28,12 @@
                     </td>
                     <td class="home__table__action">
                         <img src="../../assets/icons/edit.svg" (click)="handleEdit()">
-                        <img src="../../assets/icons/delete.svg" (click)="handleDelete()">
+                        <img src="../../assets/icons/delete.svg" (click)="item.id !== undefined ? handleDelete(item.id) : null">
                     </td>
                 </tr>
             </ng-container>
         </table>
         <table>
-            
-            <tr class="home__table--content">
-                <td>
-                    imagen
-                </td>
-                <td>
-                    Description
-                </td>
-                <td>
-                    price
-                </td>
-                <td class="home__table__action">
-                    <img src="../../assets/icons/edit.svg" (click)="handleEdit()">
-                    <img src="../../assets/icons/delete.svg" (click)="handleDelete()">
-                </td>
-            </tr>
         </table>
     </div>
 </section>

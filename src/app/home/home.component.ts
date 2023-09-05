@@ -8,7 +8,7 @@ import { Product } from '../../interfaces/product';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   public productList: Product[];
   constructor(
     private router: Router,
@@ -26,14 +26,15 @@ export class HomeComponent implements OnInit{
 
   public handleCreate(): void {
     this.router.navigate(['create'])
-    console.log("Se ejecuta el evento crear")
   }
   public handleEdit(): void {
     this.router.navigate(['update/:id'])
-    console.log("Se ejecuta el evento editar")
   }
-  public handleDelete(): void {
-    console.log("Se ejecuta el evento eliminar")
+  public handleDelete(id:number): void {
+    this.productService.deleteProduct(id.toString()).subscribe((data) => {
+      console.log(data);
+    })
+    this.getData();
   }
   
   
