@@ -9,11 +9,12 @@
     <div>
         <form class="create__form">
             <div class="create__form__container">
-                <input type="text" placeholder="Description" class="create__form--input">
-                <input type="number" placeholder="Price" class="create__form--input">
-                <input type="text" placeholder="Url image" class="create__form--input">
+                <input type="text" placeholder="Description" class="create__form--input" [(ngModel)]="description" name="description" required >
+                <input type="number" placeholder="Price" class="create__form--input" [(ngModel)]="price" name="price" required>
+                <input type="text" placeholder="Url image" class="create__form--input" [(ngModel)]="img" name="img" required >
             </div>
             <button class="create__header__btn" (click)="handleSendData()">Create product</button>
+            <small *ngIf="this.errorMessage" class="create__header__error">{{this.errorMessage}}</small>
         </form>
     </div>
 
