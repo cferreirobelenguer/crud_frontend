@@ -32,7 +32,7 @@ export class ProductService {
   }
   //update data
   updateProduct(data:Product, id:string): Observable<any> {
-    return this.http.post('http://localhost/backend/controller/create.php?idProduct='+id , {
+    return this.http.post('http://localhost/backend/controller/update.php?idProduct='+id , {
       description: data.descripcion,
       price: data.precio,
       img: data.img
