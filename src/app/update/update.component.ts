@@ -42,6 +42,7 @@ export class UpdateComponent implements OnInit{
         img: this.img
       }
       if(this.id != null) {
+        console.log(this.id)
         this.productService.updateProduct(this.data, this.id).subscribe((item) => {
           console.log(item)
         })

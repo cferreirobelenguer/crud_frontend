@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
   public handleCreate(): void {
     this.router.navigate(['create'])
   }
-  public handleEdit(): void {
-    this.router.navigate(['update/:id'])
+  public handleEdit(id:number): void {
+    this.router.navigate(['update/', id.toString()])
   }
   public handleDelete(id:number): void {
     this.productService.deleteProduct(id.toString()).subscribe((data) => {

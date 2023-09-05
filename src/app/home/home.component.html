@@ -27,7 +27,7 @@
                         {{item.precio}}
                     </td>
                     <td class="home__table__action">
-                        <img src="../../assets/icons/edit.svg" (click)="handleEdit()">
+                        <img src="../../assets/icons/edit.svg"  (click)="item.id !== undefined ? handleEdit(item.id) : null">
                         <img src="../../assets/icons/delete.svg" (click)="item.id !== undefined ? handleDelete(item.id) : null">
                     </td>
                 </tr>
