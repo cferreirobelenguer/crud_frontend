@@ -10,6 +10,10 @@ import { Product } from '../../interfaces/product';
 })
 export class HomeComponent implements OnInit {
   public productList: Product[];
+  public titleImage:string = 'image';
+  public titleDescription:string = 'description';
+  public titlePrice:string = 'price';
+  public titleAction:string = 'action';
   constructor(
     private router: Router,
     private productService: ProductService

@@ -10,10 +10,10 @@
     <div class="home__table">
         <table>
             <tr class="home__table--title">
-                <th>Image</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Action</th>
+                <th>{{titleImage | uppercase}}</th>
+                <th>{{titleDescription | uppercase}}</th>
+                <th>{{titlePrice | uppercase}}</th>
+                <th>{{titleAction | uppercase}}</th>
             </tr>
             <ng-container *ngFor="let item of productList">
                 <tr class="home__table--content">
