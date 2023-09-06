@@ -53,13 +53,22 @@
         width: 100%;
         box-sizing: border-box;
         flex-direction: column;
+        &--img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+        }
+        &__container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
         &--title {
             background-color: $gray;
             padding: 10px;
             display: flex;
-            align-self: stretch;
-            align-items: center;
-            justify-content: space-around;
+            align-items: flex-start;
+            justify-content: space-between;
             gap: 10px;
             font-family: $poppins;
             color: $black;
@@ -69,9 +78,8 @@
             background-color: $white;
             padding: 10px;
             display: flex;
-            align-self: stretch;
-            align-items: center;
-            justify-content: space-around;
+            align-items: flex-start;
+            justify-content: space-between;
             gap: 10px;
             font-family: $poppins;
             color: $black;

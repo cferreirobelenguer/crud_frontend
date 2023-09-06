@@ -8,7 +8,7 @@
     </div>
     
     <div class="home__table">
-        <table>
+        <table class="home__table__container">
             <tr class="home__table--title">
                 <th>{{titleImage | uppercase}}</th>
                 <th>{{titleDescription | uppercase}}</th>
@@ -18,13 +18,13 @@
             <ng-container *ngFor="let item of productList">
                 <tr class="home__table--content">
                     <td>
-                        {{item.img}}
+                        <img [src]="item.img" alt="product image" class="home__table--img">
                     </td>
                     <td>
                         {{item.descripcion}}
                     </td>
                     <td>
-                        {{item.precio}}
+                        {{item.precio}} € + IVA
                     </td>
                     <td class="home__table__action">
                         <img src="../../assets/icons/edit.svg"  (click)="item.id !== undefined ? handleEdit(item.id) : null">
