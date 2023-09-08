@@ -1,1 +1,28 @@
-<p>login works!</p>
+<section>
+    <div class="login">
+        <form class="login__container" method="post">
+            <h1 class="login__container__title">Products inventory</h1>
+            <h2 class="login__container__title">Log in</h2>
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required="required"
+                class="login__container--input"
+            />
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required="required"
+                class="login__container--input"
+            />
+            <button type="submit" (click)="handleLogin()" class="login__container__button">Continue</button>
+            <div class="login__container__new">
+                <h5 class="login__container__new--title">Register now</h5>
+                <button type="button" (click)="handleRedirectRegister()" class="login__container__button">Create yout account</button>
+            </div>
+            
+        </form>
+    </div>
+</section>
