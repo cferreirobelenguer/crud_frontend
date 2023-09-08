@@ -1,1 +1,44 @@
-<p>register works!</p>
+<section>
+    <div class="register">
+        <form class="register__container" method="post">
+            <h1 class="register__container__title">Products inventory</h1>
+            <h2 class="register__container__title">Register</h2>
+            <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                required="required"
+                class="register__container--input"
+            />
+            <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                required="required"
+                class="register__container--input"
+            />
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required="required"
+                class="register__container--input"
+            />
+            <input
+                type="password"
+                name="password"
+                placeholder="Repeat password"
+                required="required"
+                class="register__container--input"
+            />
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required="required"
+                class="register__container--input"
+            />
+            <button type="submit" (click)="handleRegister()" class="register__container__button">Register</button>
+        </form>
+    </div>
+</section>
