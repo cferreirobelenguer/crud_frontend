@@ -22,7 +22,7 @@ export class CreateComponent {
 
   }
   public handleNavigation():void {
-    this.router.navigate(['']);
+    this.router.navigate(['home']);
   }
 
   public handleSendData() {

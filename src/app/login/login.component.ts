@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder, FormControl } from '@angular/forms';
+import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { user } from '../../interfaces/user';
 
@@ -11,25 +11,31 @@ import { user } from '../../interfaces/user';
 export class LoginComponent {
   public userData: user;
   public isPasswordVisible: boolean;
+  public formularyLogin: FormGroup;
   constructor(
     private router: Router,
     private fb: FormBuilder
-  ) {}
-  //username with min leght 4 digits and max lenght 10 digits
-  //password min lenght 8 digits, at least one digit, one uppercase, one lowercase, and especial characters
-  formularyLogin = this.fb.group ({
-    username: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(4)]],
-    password: ['', [Validators.required, this.passwordValidator]]
-  })
-  //login user
+  ) {
+    //username with min leght 4 digits and max lenght 10 digits
+    //password min lenght 8 digits, at least one digit, one uppercase, one lowercase, and especial characters
+    this.formularyLogin = this.fb.group ({
+      username: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(4)]),
+      password: new FormControl ('', [Validators.required, this.passwordValidator])
+    })
+  }
+
+
   public handleLogin(): void {
+    console.log(this.formularyLogin.value)
+  }
+  //login user
+  public handleSubmit(): void {
     if (this.formularyLogin.valid){
-        console.log('es válido');
       const { username, password } = this.formularyLogin.value;
       if (username && password ) {
         this.userData = { username, password };
       }
-      console.log(this.userData)
+      console.log("is valid")
 
     } else {
         console.log("Hay datos inválidos en el formulario");
@@ -37,7 +43,7 @@ export class LoginComponent {
   }
 
   public passwordValidator(control: FormControl): { [key: string]: boolean } | null {
-    const validPasswordPattern = /^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\-|=])(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}$/;
+    const validPasswordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\-|=]).{8,}$/;
   
     if (control.value && !validPasswordPattern.test(control.value)) {
       return { 'invalidPassword': true };
@@ -52,25 +58,7 @@ export class LoginComponent {
 
   //show password
   public showPassword(): void {
-    const passwordId = document.getElementById('password') as HTMLInputElement;
     this.isPasswordVisible = !this.isPasswordVisible;
-    if (this.isPasswordVisible) {
-      const textInput = document.createElement("input");
-      textInput.type = "text";
-      textInput.id = passwordId.id;
-      textInput.value = passwordId.value;
-      passwordId.parentNode?.replaceChild(textInput, passwordId);
-      textInput.focus();
-      console.log(this.isPasswordVisible)
-    } else {
-      const textInput = document.createElement("input");
-      textInput.type = "password";
-      textInput.id = passwordId.id;
-      textInput.value = passwordId.value;
-      passwordId.parentNode?.replaceChild(textInput, passwordId);
-      textInput.focus();
-      console.log(this.isPasswordVisible)
-    }
   }
   
 }
