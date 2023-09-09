@@ -1,6 +1,6 @@
 <section>
     <div class="register">
-        <form class="register__container" method="post">
+        <form class="register__container" [formGroup]="formularyRegister" (ngSubmit) = handleSubmit()>
             <h1 class="register__container__title">Products inventory</h1>
             <h2 class="register__container__title">Register</h2>
             <input
@@ -8,30 +8,39 @@
                 name="name"
                 placeholder="Name"
                 required="required"
+                formControlName="name"
             />
             <input
                 type="text"
                 name="username"
                 placeholder="Username"
                 required="required"
+                formControlName="username"
             />
             <input
                 type="password"
                 name="password"
                 placeholder="Password"
                 required="required"
+                formControlName="password"
+                *ngIf="!isPasswordVisible; else textPassword"
             />
+            <ng-template #textPassword>
+                <input type="text" id="password" formControlName="password">
+            </ng-template>
+            <button class="register__container__new--password" (click)="showPassword()" >Mostrar Contraseña</button>
             <input
                 type="password"
-                name="password"
                 placeholder="Repeat password"
                 required="required"
+                formControlName="repeatpassword"
             />
             <input
                 type="email"
                 name="email"
                 placeholder="Email"
                 required="required"
+                formControlName="email"
             />
             <button type="submit" (click)="handleRegister()" class="register__container__button">Register</button>
         </form>
