@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { user } from '../../interfaces/user';
+import { UserService } from 'src/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent {
   public formularyLogin: FormGroup;
   constructor(
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userService: UserService
   ) {
     //username with min leght 4 digits and max lenght 10 digits
     //password min lenght 8 digits, at least one digit, one uppercase, one lowercase, and especial characters
@@ -26,7 +28,12 @@ export class LoginComponent {
 
 
   public handleLogin(): void {
-    console.log(this.formularyLogin.value)
+    console.log(this.userData)
+    if (this.userData) {
+      this.userService.loginUser(this.userData).subscribe((res)=> {
+        console.log(res);
+      })
+    }
   }
   //login user
   public handleSubmit(): void {
