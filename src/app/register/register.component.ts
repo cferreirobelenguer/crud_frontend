@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { user } from '../../interfaces/user';
+import { UserService } from 'src/services/user/user.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,8 @@ export class RegisterComponent {
   public formularyRegister: FormGroup;
   constructor(
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userService: UserService
   ) {
     //name only letters and min leght 2
     //username with min leght 4 digits and max lenght 10 digits
@@ -35,9 +37,18 @@ export class RegisterComponent {
         const { name, username, password, email, repeatpassword } = this.formularyRegister.value;
         if (username && password && name && email && repeatpassword && (password === repeatpassword)) {
           this.userRegister = { name, username, password, email};
-          console.log("is valid ", this.userRegister)
         }
-  
+        if (this.userRegister) {
+          this.userService.registerUser(this.userRegister).subscribe({
+            next: (data) => {
+              console.log(data);
+            },
+            error: (error) => {
+              console.error(error);
+            }
+          });
+        }
+        
       } else {
           console.log("Hay datos inválidos en el formulario");
       }
@@ -53,11 +64,7 @@ export class RegisterComponent {
     return null;
   }
 
-  public handleRegister(): void {
-    console.log(this.formularyRegister.value)
-  }
-
-  //show password
+  //show password, if isPasswordVisible is true  it changes type password to text
   public showPassword(): void {
     this.isPasswordVisible = !this.isPasswordVisible;
   }

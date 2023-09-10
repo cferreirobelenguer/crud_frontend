@@ -1,6 +1,6 @@
 <section>
     <div class="register">
-        <form class="register__container" [formGroup]="formularyRegister" (ngSubmit) = handleSubmit()>
+        <form class="register__container" [formGroup]="formularyRegister">
             <h1 class="register__container__title">Products inventory</h1>
             <h2 class="register__container__title">Register</h2>
             <input
@@ -42,7 +42,7 @@
                 required="required"
                 formControlName="email"
             />
-            <button type="submit" (click)="handleRegister()" class="register__container__button">Register</button>
+            <button type="submit" (click)="handleSubmit()" class="register__container__button">Register</button>
         </form>
     </div>
 </section>
