@@ -11,8 +11,8 @@ const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'create', component: CreateComponent},
-  {path: 'update/:id', component: UpdateComponent}
+  {path: 'create', component: CreateComponent, canActivate: [AuthGuard]},
+  {path: 'update/:id', component: UpdateComponent, canActivate: [AuthGuard]}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
