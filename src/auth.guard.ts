@@ -12,8 +12,10 @@ export class AuthGuard implements CanActivate {
     // Check if session data exists in sessionStorage
     const userData = sessionStorage.getItem('userData');
     if (userData) {
+        //if session data exists we can redirect to home
         return true;
     } else {
+        // if session data not exists we can´t redirect to home
         this.router.navigate(['/']);
         return false;
         }
