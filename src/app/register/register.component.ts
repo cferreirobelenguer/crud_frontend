@@ -37,6 +37,7 @@ export class RegisterComponent {
         const { name, username, password, email, repeatpassword } = this.formularyRegister.value;
         if (username && password && name && email && repeatpassword && (password === repeatpassword)) {
           this.userRegister = { name, username, password, email};
+          console.log("dato a ver ",this.userRegister);
         }
         if (this.userRegister) {
           this.userService.registerUser(this.userRegister).subscribe({

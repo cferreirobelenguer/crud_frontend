@@ -26,23 +26,19 @@ export class LoginComponent {
     })
   }
 
-
-  public handleLogin(): void {
-    console.log(this.userData)
-    if (this.userData) {
-      this.userService.loginUser(this.userData).subscribe((res)=> {
-        console.log(res);
-      })
-    }
-  }
   //login user
   public handleSubmit(): void {
     if (this.formularyLogin.valid){
       const { username, password } = this.formularyLogin.value;
       if (username && password ) {
-        this.userData = { username, password };
+        this.userData = { username , password };
       }
       console.log("is valid")
+      if (this.userData) {
+        this.userService.longinUser(this.userData). subscribe ( (res) => {
+          console.log(res);
+        })
+    }
 
     } else {
         console.log("Hay datos inválidos en el formulario");

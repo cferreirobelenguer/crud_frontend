@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { user } from '../../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,10 @@ export class UserService {
     return this.http.post<any>(this.apiUrlpost, userRegister);
   }
 
-  //login user
-  public loginUser(userData: any): Observable<any> {
-    return this.http.get<any>(this.apiUrlGet, userData);
-  } 
+  longinUser(userData:user): Observable<any> {
+    return this.http.post(this.apiUrlGet, {
+      username: userData.username,
+      password: userData.password
+    });
+  }
 }
