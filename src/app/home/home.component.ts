@@ -14,12 +14,18 @@ export class HomeComponent implements OnInit {
   public titleDescription:string = 'description';
   public titlePrice:string = 'price';
   public titleAction:string = 'action';
+  public userData: any;
   constructor(
     private router: Router,
     private productService: ProductService
   ) {}
   ngOnInit(): void {
-    this.getData()
+    this.getData();
+    const userDataString = sessionStorage.getItem('userData');
+
+    if (userDataString !== null) {
+      this.userData = JSON.parse(userDataString);
+    }
   }
 
   public getData(): void {

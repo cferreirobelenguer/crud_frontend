@@ -1,5 +1,8 @@
 <section class="home">
     <div class="home__header">
+        <div *ngIf="userData">
+            <h3>Hello {{this.userData.nombre}}</h3>
+        </div>
         <div class="home__header__text">
             <h1 class="home__header__text--title">Products</h1>
             <h3 class="home__header__text--subtitle">Here is a list of products</h3>

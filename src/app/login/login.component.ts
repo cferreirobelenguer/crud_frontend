@@ -38,9 +38,6 @@ export class LoginComponent {
         this.userService.longinUser(this.userData). subscribe ( (res) => {
           console.log(res);
           this.loginInfo = res.data;
-          console.log('Nombre:', this.loginInfo.nombre);
-          console.log('Usuario:', this.loginInfo.usuario);
-          console.log('Email:', this.loginInfo.email);
           if(res.data) {
             this.router.navigate(['home']);
             //put data into sessionStorage
