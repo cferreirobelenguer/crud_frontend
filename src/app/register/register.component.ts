@@ -69,4 +69,8 @@ export class RegisterComponent {
   public showPassword(): void {
     this.isPasswordVisible = !this.isPasswordVisible;
   }
+  //redirect home
+  public goHome(): void {
+    this.router.navigate(['/']);
+  }
 }
