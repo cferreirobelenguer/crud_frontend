@@ -17,6 +17,20 @@
             flex-direction: row;
             align-items: center;
         }
+        &__data {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        &__logout {
+            background-color: white;
+            border-style: none;
+            display: flex;
+            gap: 8px;
+            color: $black;
+            font-family: $poppins;
+            @include subtitle_h2;
+        }
         &__btn {
             width: 160px;
             height: 42px;

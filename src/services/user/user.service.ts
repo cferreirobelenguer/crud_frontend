@@ -9,7 +9,7 @@ import { user } from '../../interfaces/user';
 export class UserService {
   private apiUrlpost = 'http://localhost/backend/controller/register.php';
   private apiUrlGet = 'http://localhost/backend/controller/login.php';
-
+  private apiLogout = 'http://localhost/backend/controller/logout.php';
   constructor(private http: HttpClient) { }
   //register user
   public registerUser(userRegister: any): Observable<any> {
@@ -21,5 +21,9 @@ export class UserService {
       username: userData.username,
       password: userData.password
     });
+  }
+
+  logoutUser(): Observable<any> {
+    return this.http.get(this.apiLogout);
   }
 }

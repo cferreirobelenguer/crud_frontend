@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/services/product/product.service';
 import { Product } from '../../interfaces/product';
+import { UserService } from 'src/services/user/user.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit {
   public userData: any;
   constructor(
     private router: Router,
-    private productService: ProductService
+    private productService: ProductService,
+    private userService: UserService
   ) {}
   ngOnInit(): void {
     this.getData();
@@ -47,5 +49,12 @@ export class HomeComponent implements OnInit {
     this.getData();
   }
   
+  public logOut(): void {
+    this.userService.logoutUser().subscribe((res)=> {
+      console.log(res)
+    })
+    sessionStorage.clear();
+    this.router.navigate(['']);
+  }
   
 }
