@@ -11,6 +11,7 @@ import { UserService } from 'src/services/user/user.service';
 })
 export class LoginComponent {
   public userData: user;
+  public loginInfo: any;
   public isPasswordVisible: boolean;
   public formularyLogin: FormGroup;
   constructor(
@@ -33,10 +34,18 @@ export class LoginComponent {
       if (username && password ) {
         this.userData = { username , password };
       }
-      console.log("is valid")
       if (this.userData) {
         this.userService.longinUser(this.userData). subscribe ( (res) => {
           console.log(res);
+          this.loginInfo = res.data;
+          console.log('Nombre:', this.loginInfo.nombre);
+          console.log('Usuario:', this.loginInfo.usuario);
+          console.log('Email:', this.loginInfo.email);
+          if(res.data) {
+            this.router.navigate(['home']);
+            //put data into sessionStorage
+            sessionStorage.setItem('userData', JSON.stringify(res.data));
+          }
         })
     }
 
