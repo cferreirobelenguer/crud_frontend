@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { user } from '../../interfaces/user';
@@ -9,11 +9,12 @@ import { UserService } from 'src/services/user/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   public userData: user;
   public loginInfo: any;
   public isPasswordVisible: boolean;
   public formularyLogin: FormGroup;
+  public errorMessage: string;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -27,8 +28,13 @@ export class LoginComponent {
     })
   }
 
+  ngOnInit(): void {
+    this.errorMessage = '';
+  }
+
   //login user
   public handleSubmit(): void {
+    this.errorMessage = '';
     if (this.formularyLogin.valid){
       const { username, password } = this.formularyLogin.value;
       if (username && password ) {
@@ -37,6 +43,10 @@ export class LoginComponent {
       if (this.userData) {
         this.userService.longinUser(this.userData). subscribe ( (res) => {
           console.log(res);
+          if (res.error) {
+            console.log('Se produce esto')
+            this.errorMessage = 'Inicio de sesión fallido';
+          }
           this.loginInfo = res.data;
           if(res.data) {
             this.router.navigate(['home']);
@@ -48,6 +58,7 @@ export class LoginComponent {
 
     } else {
         console.log("Hay datos inválidos en el formulario");
+        this.errorMessage = 'Hay datos inválidos en el formulario'
     }
   }
 

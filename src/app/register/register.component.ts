@@ -61,6 +61,7 @@ export class RegisterComponent implements OnInit{
         
       } else {
           console.log("Hay datos inválidos en el formulario");
+          this.errorMessage = 'Hay datos inválidos en el formulario'
       }
     }
 

@@ -27,7 +27,11 @@
                 <h5 class="login__container__new--title">Register now</h5>
                 <button type="button" (click)="handleRedirectRegister()" class="login__container__button">Create yout account</button>
             </div>
-            
         </form>
+        <div *ngIf="this.errorMessage">
+            <p class="error__message">{{this.errorMessage}}</p>
+        </div>
+            
+        
     </div>
 </section>
