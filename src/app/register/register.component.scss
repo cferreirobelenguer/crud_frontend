@@ -78,4 +78,12 @@
             }
         }
     }
+    .error {
+        &__message {
+            color: red;
+            font-weight: bold;
+            margin: 0;
+            font-family:$poppins;
+        }
+    }
 }

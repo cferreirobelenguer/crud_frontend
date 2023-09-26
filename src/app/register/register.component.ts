@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { user } from '../../interfaces/user';
@@ -9,10 +9,11 @@ import { UserService } from 'src/services/user/user.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
   public userRegister: user;
   public isPasswordVisible: boolean;
   public formularyRegister: FormGroup;
+  public errorMessage: string;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -31,8 +32,13 @@ export class RegisterComponent {
     })
   }
 
+  ngOnInit(): void {
+    this.errorMessage = '';
+  }
+
     //register user
     public handleSubmit(): void {
+      this.errorMessage = '';
       if (this.formularyRegister.valid){
         const { name, username, password, email, repeatpassword } = this.formularyRegister.value;
         if (username && password && name && email && repeatpassword && (password === repeatpassword)) {
@@ -43,6 +49,9 @@ export class RegisterComponent {
           this.userService.registerUser(this.userRegister).subscribe({
             next: (data) => {
               console.log(data);
+              if (!data.message) {
+                this.errorMessage= 'Ya existe un usuario con ese usuario';
+              }
             },
             error: (error) => {
               console.error(error);
