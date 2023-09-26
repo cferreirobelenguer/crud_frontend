@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProductService } from 'src/services/product/product.service';
 import { Product } from '../../interfaces/product';
 import { UserService } from 'src/services/user/user.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -16,17 +17,21 @@ export class HomeComponent implements OnInit {
   public titlePrice:string = 'price';
   public titleAction:string = 'action';
   public userData: any;
+  public usernameData: string;
   constructor(
     private router: Router,
     private productService: ProductService,
-    private userService: UserService
+    private userService: UserService,
+    private cdr: ChangeDetectorRef
   ) {}
   ngOnInit(): void {
     this.getData();
     const userDataString = sessionStorage.getItem('userData');
-
     if (userDataString !== null) {
       this.userData = JSON.parse(userDataString);
+      this.usernameData = this.userData.nombre;
+      console.log(this.usernameData)
+      this.cdr.detectChanges();
     }
   }
 

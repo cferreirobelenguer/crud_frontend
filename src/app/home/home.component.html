@@ -14,7 +14,9 @@
             <h1 class="home__header__text--title">Products</h1>
             <h3 class="home__header__text--subtitle">Here is a list of products</h3>
         </div>
-        <button class="home__header__btn" (click)="handleCreate()">Add product</button>
+        <ng-container *ngIf="this.userData.nombre === 'admin'">
+            <button class="home__header__btn" (click)="handleCreate()">Add product</button>
+        </ng-container>
     </div>
     
     <div class="home__table">
@@ -23,7 +25,9 @@
                 <th>{{titleImage | uppercase}}</th>
                 <th>{{titleDescription | uppercase}}</th>
                 <th>{{titlePrice | uppercase}}</th>
-                <th>{{titleAction | uppercase}}</th>
+                <ng-container *ngIf="this.userData.nombre === 'admin'">
+                    <th>{{titleAction | uppercase}}</th>
+                </ng-container>
             </tr>
             <ng-container *ngFor="let item of productList">
                 <tr class="home__table--content">
@@ -36,10 +40,12 @@
                     <td>
                         {{item.precio}} € + IVA
                     </td>
-                    <td class="home__table__action">
-                        <img src="../../assets/icons/edit.svg"  (click)="item.id !== undefined ? handleEdit(item.id) : null">
-                        <img src="../../assets/icons/delete.svg" (click)="item.id !== undefined ? handleDelete(item.id) : null">
-                    </td>
+                    <ng-container *ngIf="this.userData.nombre === 'admin'">
+                        <td class="home__table__action">
+                            <img src="../../assets/icons/edit.svg"  (click)="item.id !== undefined ? handleEdit(item.id) : null">
+                            <img src="../../assets/icons/delete.svg" (click)="item.id !== undefined ? handleDelete(item.id) : null">
+                        </td>
+                    </ng-container>
                 </tr>
             </ng-container>
         </table>
